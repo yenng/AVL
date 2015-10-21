@@ -123,7 +123,7 @@ void test_double_rotation_the_tree(void){
 
 
 
-  node1 = rightLeftRotation(node1);
+  rightLeftRotation(&node1);
 
   nodeBranch1 = node1->right->left;
 

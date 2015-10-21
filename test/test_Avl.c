@@ -1,6 +1,7 @@
 #include "unity.h"
 #include "Avl.h"
 #include "Node.h"
+#include "Rotation.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -44,15 +45,78 @@ void test_avlAdd(void){
 	int i;
   i = avlAdd(&x, &node20);
   
+  TEST_ASSERT_EQUAL(10,x->data);
+  TEST_ASSERT_EQUAL(1,x->balanceFactor);
   TEST_ASSERT_EQUAL(20,x->right->data);
+  TEST_ASSERT_EQUAL(0,x->right->balanceFactor);
 }
-void test_avlAdd_node_to_tree_with_1_branch(void)
-{
+void test_avlAdd_twice(void){
+  Node* x = &node30;
+	int i;
+  i = avlAdd(&x, &node20);
+  i = avlAdd(&x, &node40);
+  
+  TEST_ASSERT_EQUAL(30,x->data);
+  TEST_ASSERT_EQUAL(0,x->balanceFactor);
+  TEST_ASSERT_EQUAL(20,x->left->data);
+  TEST_ASSERT_EQUAL(0,x->left->balanceFactor);
+  TEST_ASSERT_EQUAL(40,x->right->data);
+  TEST_ASSERT_EQUAL(0,x->right->balanceFactor);
+}
+
+void test_avlAdd_node_to_tree_with_1_branch(void){
   //declare variable.
-	Node* node1 = malloc(sizeof(Node));
-  // Node* x = &node1;
+  Node* node = malloc(sizeof(Node));
+  //create a complicated tree.
+	node = (Node*)createNode(-1, 30);
+  node->left = (Node*)createNode(0,20);
   //create a tree with 3 nodes.
-	node1 = (Node*)createNode(1, 60);
-  node1->left = (Node*)createNode(0,50);
-  // int i = avlAdd(&node1, &node20);
+	int i;
+  i = avlAdd(&node, &node40);
+  
+  TEST_ASSERT_EQUAL(0,node->balanceFactor);
+  TEST_ASSERT_EQUAL(30,node->data);
+  TEST_ASSERT_EQUAL(0,node->left->balanceFactor);
+  TEST_ASSERT_EQUAL(20,node->left->data);
+  TEST_ASSERT_EQUAL(0,node->right->balanceFactor);
+  TEST_ASSERT_EQUAL(40,node->right->data);
+}
+
+void test_double_rotation_the_tree_by_using_avlAdd_function(void){
+  //declare variable.
+  Node* node1 = malloc(sizeof(Node));
+  //create a complicated tree.
+	node1 = (Node*)createNode(2, 30);
+  node1->left = (Node*)createNode(-1,20);
+  node1->left->left = (Node*)createNode(0,10);
+  node1->right = (Node*)createNode(-1,80);
+  node1->right->left = (Node*)createNode(1,50);
+  node1->right->right = (Node*)createNode(-1,100);
+  
+  //declare variable to prevent complicated term.
+  Node* nodeBranch1 = node1->right->left;
+  Node* nodeBranch2 = node1->right->right;
+  
+  //continue build the tree.
+  nodeBranch1->left = (Node*)createNode(0,40);
+  nodeBranch1->right = (Node*)createNode(1,60);
+  nodeBranch1->right->right = (Node*)createNode(0,70);
+  nodeBranch2->left = (Node*)createNode(0,90);
+  int i;
+  i = avlAdd(&node1, NULL);
+  nodeBranch1 = node1->right->left;
+  nodeBranch2 = node1->right->right;
+  Node* nodeBranch3 = node1->left->left;
+  
+  //test the tree after rotation.
+  TEST_ASSERT_EQUAL(50,node1->data);
+  TEST_ASSERT_EQUAL(30,node1->left->data);
+  TEST_ASSERT_EQUAL(20,node1->left->left->data);
+  TEST_ASSERT_EQUAL(40,node1->left->right->data);
+  TEST_ASSERT_EQUAL(80,node1->right->data);
+  TEST_ASSERT_EQUAL(60,nodeBranch1->data);
+  TEST_ASSERT_EQUAL(100,nodeBranch2->data);
+  TEST_ASSERT_EQUAL(70,nodeBranch1->right->data);
+  TEST_ASSERT_EQUAL(90,nodeBranch2->left->data);
+  TEST_ASSERT_EQUAL(10,nodeBranch3->left->data);
 }

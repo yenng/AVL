@@ -3,32 +3,32 @@
 
 Node *rightRotation(Node *centerNode){
   Node *leftNode = centerNode->left;
-  Node *rightNode = leftNode->right;
+  Node *leftRightNode = leftNode->right;
   
   leftNode->right = centerNode;
-  centerNode->left = rightNode;
+  centerNode->left = leftRightNode;
   
   return (Node*)leftNode;
 }
 
 Node *leftRotation(Node *centerNode){
   Node *rightNode = centerNode->right;
-  Node *leftNode = rightNode->left;
+  Node *rightLeftNode = rightNode->left;
   
   rightNode->left = centerNode;
-  centerNode->right = leftNode;
+  centerNode->right = rightLeftNode;
   
   return (Node*)rightNode;
 }
 
-Node *rightLeftRotation(Node *centerNode){
-  Node *rightNode = centerNode->right;
-  Node *leftNode = rightNode->left;
+void *rightLeftRotation(Node **centerNode){
+  Node *rightNode = (*centerNode)->right;
+  Node *rightLeftNode = rightNode->left;
   
-  leftNode->left = centerNode;
-  leftNode->right = rightNode;
-  rightNode->left = leftNode->right;
-  centerNode->right = leftNode->left;
+  (*centerNode)->right = rightLeftNode->left;
+  rightLeftNode->left = (*centerNode);
+  rightNode->left = rightLeftNode->right;
+  rightLeftNode->right = rightNode;
   
-  return (Node*)leftNode;
+  (*centerNode) = rightLeftNode;
 }

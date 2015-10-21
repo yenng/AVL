@@ -63,7 +63,7 @@ void test_double_rotation_the_tree(void){
   nodeBranch1->right->right = (Node*)createNode(0,70);
   nodeBranch2->left = (Node*)createNode(0,90);
   
-  node1 = rightLeftRotation(node1);
+  rightLeftRotation(&node1);
   nodeBranch1 = node1->right->left;
   nodeBranch2 = node1->right->right;
   Node* nodeBranch3 = node1->left->left;

@@ -31,7 +31,9 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_avlAdd(void);
+extern void test_avlAdd_twice(void);
 extern void test_avlAdd_node_to_tree_with_1_branch(void);
+extern void test_double_rotation_the_tree(void);
 
 
 //=======Test Reset Option=====
@@ -47,8 +49,10 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_Avl.c");
-  RUN_TEST(test_avlAdd, 42);
-  RUN_TEST(test_avlAdd_node_to_tree_with_1_branch, 49);
+  RUN_TEST(test_avlAdd, 43);
+  RUN_TEST(test_avlAdd_twice, 53);
+  RUN_TEST(test_avlAdd_node_to_tree_with_1_branch, 67);
+  RUN_TEST(test_double_rotation_the_tree, 85);
 
   return (UnityEnd());
 }

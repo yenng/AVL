@@ -4,16 +4,22 @@
   :file: test_Avl.c
 :successes:
 - :test: test_avlAdd
-  :line: 42
+  :line: 43
+  :message: ''
+- :test: test_avlAdd_twice
+  :line: 53
   :message: ''
 - :test: test_avlAdd_node_to_tree_with_1_branch
-  :line: 49
+  :line: 67
+  :message: ''
+- :test: test_double_rotation_the_tree
+  :line: 85
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 2
-  :passed: 2
+  :total: 4
+  :passed: 4
   :failed: 0
   :ignored: 0
 :stdout:

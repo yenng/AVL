@@ -4,5 +4,5 @@
 
 Node *rightRotation(Node *centerNode);
 Node *leftRotation(Node *centerNode);
-Node *rightLeftRotation(Node *centerNode);
+void *rightLeftRotation(Node **centerNode);
 #endif // Rotation_H
