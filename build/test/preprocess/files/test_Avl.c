@@ -77,4 +77,8 @@ void test_avlAdd_(void){
 
  avlAdd(&node10, &node20);
 
+  UnityAssertEqualNumber((_U_SINT)((20)), (_U_SINT)((node10.right->data)), (((void *)0)), (_U_UINT)42, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((node10.balanceFactor)), (((void *)0)), (_U_UINT)43, UNITY_DISPLAY_STYLE_INT);
+
 }

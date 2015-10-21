@@ -39,4 +39,6 @@ void tearDown(void){}
 
 void test_avlAdd_(void){
 	avlAdd(&node10, &node20);
+  TEST_ASSERT_EQUAL(20,node10.right->data);
+  TEST_ASSERT_EQUAL(-1,node10.balanceFactor);
 }
