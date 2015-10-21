@@ -18,7 +18,7 @@ void test_module_create_node(void)
   //create a tree with 1 node.
 	node1 = (Node*)createNode(1, 60);
   //test the tree.
-  TEST_ASSERT_EQUAL(1,node1->weight);
+  TEST_ASSERT_EQUAL(1,node1->balanceFactor);
   TEST_ASSERT_EQUAL(60,node1->data);
 }
 

@@ -6,7 +6,7 @@ typedef struct Node_t Node;
 struct Node_t{
   Node *left;
   Node *right;
-  int weight;
+  int balanceFactor;
   int data;
 };
 

@@ -1,0 +1,23 @@
+---
+:source:
+  :path: test
+  :file: test_Rotation.c
+:successes:
+- :test: test_right_rotate_node_tree_with_2_branches
+  :line: 15
+  :message: ''
+- :test: test_left_rotate_node_tree_with_2_branches
+  :line: 30
+  :message: ''
+:failures:
+- :test: test_double_rotation_the_tree
+  :line: 75
+  :message: Expected 40 Was 30
+:ignores: []
+:counts:
+  :total: 3
+  :passed: 2
+  :failed: 1
+  :ignored: 0
+:stdout:
+- ''

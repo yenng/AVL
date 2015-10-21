@@ -1,0 +1,23 @@
+---
+:source:
+  :path: test
+  :file: test_Node.c
+:successes:
+- :test: test_module_create_node
+  :line: 14
+  :message: ''
+- :test: test_create_node_tree_with_2_branches
+  :line: 25
+  :message: ''
+- :test: test_create_tree_for_double_rotation
+  :line: 39
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 3
+  :passed: 3
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''
