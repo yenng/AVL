@@ -1,39 +1,43 @@
 #include "Avl.h"
 #include "Node.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-int avlAdd(Node *root, Node *newNode){
-  Node *root1;
-  if(root->balanceFactor == 0){
-    if(root->right==NULL&&root->left==NULL){
-      root->right = newNode;
-      root->balanceFactor -= 1;
+int avlAdd(Node **root, Node *newNode){
+  Node *subRoot;
+  int i;
+  if((*root)->data > newNode->data){
+    if((*root)->left == NULL){
+      (*root)->left = newNode;
+      (*root)->balanceFactor --;
+      if((*root)->right == NULL)
+        return 1;
+      else 
+        return 0;
     }
     else{
-      *root1 = root->right;
-      avlAdd(&root1, &newNode);
+      subRoot = (*root)->left;
+      i = avlAdd(&subRoot,newNode);
+      if(i==1)
+        (*root)->balanceFactor --;
     }
   }
-  if(root->balanceFactor > 0){
-    if(root->left==NULL){
-      root->left = newNode;
-      root->balanceFactor += 1;
+  if((*root)->data < newNode->data){
+    if((*root)->right == NULL){
+      (*root)->right = newNode;
+      (*root)->balanceFactor ++;
+      if((*root)->left == NULL)
+        return 1;
+      else 
+        return 0;
     }
     else{
-      *root1 = root->left;
-      avlAdd(&root1, &newNode);      
+      subRoot = (*root)->left;
+      i = avlAdd(&subRoot,newNode);
+      if(i==1)
+        (*root)->balanceFactor ++;
     }
   }
-  if(root->balanceFactor < 0){
-    if(root->right==NULL){
-      root->left = newNode;
-      root->balanceFactor -= 1;
-    }
-    else{
-      *root1 = root->right;
-      avlAdd(&root1, &newNode);  
-    }
-  }
-
 }
 
 int avlRemove(Node *root, int data){

@@ -3,14 +3,17 @@
   :path: test
   :file: test_Avl.c
 :successes:
-- :test: test_avlAdd_
-  :line: 40
+- :test: test_avlAdd
+  :line: 42
+  :message: ''
+- :test: test_avlAdd_node_to_tree_with_1_branch
+  :line: 49
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 1
-  :passed: 1
+  :total: 2
+  :passed: 2
   :failed: 0
   :ignored: 0
 :stdout:

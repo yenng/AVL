@@ -1,6 +1,8 @@
 #include "unity.h"
 #include "Avl.h"
 #include "Node.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 Node  node10, node20, node30, node40, node50, node60, node70, node80, node90;
 Node  node100, node110, node120, node130, node140, node150, node160, node170;
@@ -37,8 +39,20 @@ void setUp(void){
 
 void tearDown(void){}
 
-void test_avlAdd_(void){
-	avlAdd(&node10, &node20);
-  TEST_ASSERT_EQUAL(20,node10.right->data);
-  TEST_ASSERT_EQUAL(-1,node10.balanceFactor);
+void test_avlAdd(void){
+  Node* x = &node10;
+	int i;
+  i = avlAdd(&x, &node20);
+  
+  TEST_ASSERT_EQUAL(20,x->right->data);
+}
+void test_avlAdd_node_to_tree_with_1_branch(void)
+{
+  //declare variable.
+	Node* node1 = malloc(sizeof(Node));
+  // Node* x = &node1;
+  //create a tree with 3 nodes.
+	node1 = (Node*)createNode(1, 60);
+  node1->left = (Node*)createNode(0,50);
+  // int i = avlAdd(&node1, &node20);
 }

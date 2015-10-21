@@ -3,6 +3,8 @@
 #include "unity.h"
 
 
+
+
 Node node10, node20, node30, node40, node50, node60, node70, node80, node90;
 
 Node node100, node110, node120, node130, node140, node150, node160, node170;
@@ -73,12 +75,36 @@ void tearDown(void){}
 
 
 
-void test_avlAdd_(void){
+void test_avlAdd(void){
 
- avlAdd(&node10, &node20);
+  Node* x = &node10;
 
-  UnityAssertEqualNumber((_U_SINT)((20)), (_U_SINT)((node10.right->data)), (((void *)0)), (_U_UINT)42, UNITY_DISPLAY_STYLE_INT);
+ int i;
 
-  UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((node10.balanceFactor)), (((void *)0)), (_U_UINT)43, UNITY_DISPLAY_STYLE_INT);
+  i = avlAdd(&x, &node20);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((20)), (_U_SINT)((x->right->data)), (((void *)0)), (_U_UINT)47, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+void test_avlAdd_node_to_tree_with_1_branch(void)
+
+{
+
+
+
+ Node* node1 = malloc(sizeof(Node));
+
+
+
+
+
+ node1 = (Node*)createNode(1, 60);
+
+  node1->left = (Node*)createNode(0,50);
+
+
 
 }
