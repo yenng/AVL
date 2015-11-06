@@ -12,14 +12,20 @@
 - :test: test_avlAdd_node_to_tree_with_1_branch
   :line: 67
   :message: ''
-- :test: test_double_rotation_the_tree
+- :test: test_double_rotation_the_tree_by_using_avlAdd_function
   :line: 85
+  :message: ''
+- :test: test_avlremove_smaller_node_from_tree
+  :line: 124
+  :message: ''
+- :test: test_avlremove_larger_node_from_tree
+  :line: 142
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 4
-  :passed: 4
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
 :stdout:

@@ -160,7 +160,7 @@ void test_avlAdd_node_to_tree_with_1_branch(void){
 
 
 
-void test_double_rotation_the_tree(void){
+void test_double_rotation_the_tree_by_using_avlAdd_function(void){
 
 
 
@@ -233,5 +233,77 @@ void test_double_rotation_the_tree(void){
   UnityAssertEqualNumber((_U_SINT)((90)), (_U_SINT)((nodeBranch2->left->data)), (((void *)0)), (_U_UINT)120, UNITY_DISPLAY_STYLE_INT);
 
   UnityAssertEqualNumber((_U_SINT)((10)), (_U_SINT)((nodeBranch3->left->data)), (((void *)0)), (_U_UINT)121, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_avlremove_smaller_node_from_tree(void){
+
+
+
+  Node* node = malloc(sizeof(Node));
+
+
+
+ node = (Node*)createNode(0, 30);
+
+  node->left = (Node*)createNode(0,20);
+
+  node->right = (Node*)createNode(0,40);
+
+
+
+ Node *removedNode = avlRemove(&node, 20);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((node->balanceFactor)), (((void *)0)), (_U_UINT)134, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((30)), (_U_SINT)((node->data)), (((void *)0)), (_U_UINT)135, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((node->right->balanceFactor)), (((void *)0)), (_U_UINT)136, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((40)), (_U_SINT)((node->right->data)), (((void *)0)), (_U_UINT)137, UNITY_DISPLAY_STYLE_INT);
+
+  if ((((node->left)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)138);;};
+
+  UnityAssertEqualNumber((_U_SINT)((20)), (_U_SINT)(((int)(removedNode->data))), (((void *)0)), (_U_UINT)139, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_avlremove_larger_node_from_tree(void){
+
+
+
+  Node* node = malloc(sizeof(Node));
+
+
+
+ node = (Node*)createNode(0, 30);
+
+  node->left = (Node*)createNode(0,20);
+
+  node->right = (Node*)createNode(0,40);
+
+
+
+ Node *removedNode = avlRemove(&node, 40);
+
+
+
+  UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((node->balanceFactor)), (((void *)0)), (_U_UINT)152, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((30)), (_U_SINT)((node->data)), (((void *)0)), (_U_UINT)153, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((node->left->balanceFactor)), (((void *)0)), (_U_UINT)154, UNITY_DISPLAY_STYLE_INT);
+
+  UnityAssertEqualNumber((_U_SINT)((20)), (_U_SINT)((node->left->data)), (((void *)0)), (_U_UINT)155, UNITY_DISPLAY_STYLE_INT);
+
+  if ((((node->right)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)156);;};
+
+  UnityAssertEqualNumber((_U_SINT)((40)), (_U_SINT)(((int)(removedNode->data))), (((void *)0)), (_U_UINT)157, UNITY_DISPLAY_STYLE_INT);
 
 }

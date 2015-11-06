@@ -33,7 +33,9 @@ extern void tearDown(void);
 extern void test_avlAdd(void);
 extern void test_avlAdd_twice(void);
 extern void test_avlAdd_node_to_tree_with_1_branch(void);
-extern void test_double_rotation_the_tree(void);
+extern void test_double_rotation_the_tree_by_using_avlAdd_function(void);
+extern void test_avlremove_smaller_node_from_tree(void);
+extern void test_avlremove_larger_node_from_tree(void);
 
 
 //=======Test Reset Option=====
@@ -52,7 +54,9 @@ int main(void)
   RUN_TEST(test_avlAdd, 43);
   RUN_TEST(test_avlAdd_twice, 53);
   RUN_TEST(test_avlAdd_node_to_tree_with_1_branch, 67);
-  RUN_TEST(test_double_rotation_the_tree, 85);
+  RUN_TEST(test_double_rotation_the_tree_by_using_avlAdd_function, 85);
+  RUN_TEST(test_avlremove_smaller_node_from_tree, 124);
+  RUN_TEST(test_avlremove_larger_node_from_tree, 142);
 
   return (UnityEnd());
 }

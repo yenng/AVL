@@ -3,5 +3,5 @@
 #include "Node.h"
 
 int avlAdd(Node **root, Node *newNode);
-int avlRemove(Node *root, int data);
+Node *avlRemove(Node **root, int data);
 #endif // Avl_H

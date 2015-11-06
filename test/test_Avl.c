@@ -120,3 +120,39 @@ void test_double_rotation_the_tree_by_using_avlAdd_function(void){
   TEST_ASSERT_EQUAL(90,nodeBranch2->left->data);
   TEST_ASSERT_EQUAL(10,nodeBranch3->left->data);
 }
+
+void test_avlremove_smaller_node_from_tree(void){
+  //declare variable.
+  Node* node = malloc(sizeof(Node));
+  //create a complicated tree.
+	node = (Node*)createNode(0, 30);
+  node->left = (Node*)createNode(0,20);
+  node->right = (Node*)createNode(0,40);
+  //create a tree with 3 nodes.
+	Node *removedNode = avlRemove(&node, 20);
+  
+  TEST_ASSERT_EQUAL(1,node->balanceFactor);
+  TEST_ASSERT_EQUAL(30,node->data);
+  TEST_ASSERT_EQUAL(0,node->right->balanceFactor);
+  TEST_ASSERT_EQUAL(40,node->right->data); 
+  TEST_ASSERT_NULL(node->left); 
+  TEST_ASSERT_EQUAL(20,(int)(removedNode->data)); 
+}
+
+void test_avlremove_larger_node_from_tree(void){
+  //declare variable.
+  Node* node = malloc(sizeof(Node));
+  //create a complicated tree.
+	node = (Node*)createNode(0, 30);
+  node->left = (Node*)createNode(0,20);
+  node->right = (Node*)createNode(0,40);
+  //create a tree with 3 nodes.
+	Node *removedNode = avlRemove(&node, 40);
+  
+  TEST_ASSERT_EQUAL(-1,node->balanceFactor);
+  TEST_ASSERT_EQUAL(30,node->data);
+  TEST_ASSERT_EQUAL(0,node->left->balanceFactor);
+  TEST_ASSERT_EQUAL(20,node->left->data); 
+  TEST_ASSERT_NULL(node->right); 
+  TEST_ASSERT_EQUAL(40,(int)(removedNode->data)); 
+}

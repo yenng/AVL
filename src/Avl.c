@@ -74,6 +74,53 @@ int avlAdd(Node **root, Node *newNode){
   }
 }
 
-int avlRemove(Node *root, int data){
-
+Node *avlRemove(Node **root, int data){
+  Node *removedNode;
+  if((*root)->data > data){
+    if((*root)->left->data == data){
+      removedNode = (*root)->left;
+      (*root)->left = NULL;
+      (*root)->balanceFactor += 1;
+      return removedNode;
+    }
+    else
+      removedNode = avlRemove(&((*root)->left), data);      
+  }
+  else if((*root)->data < data){
+    if((*root)->right->data == data){
+      removedNode = (*root)->right;
+      (*root)->right = NULL;
+      (*root)->balanceFactor -= 1;
+      return removedNode;
+    }
+    else
+      removedNode = avlRemove(&((*root)->right), data);      
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
