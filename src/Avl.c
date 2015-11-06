@@ -7,6 +7,40 @@
 int avlAdd(Node **root, Node *newNode){
   Node* subRoot;
   int i = 0;
+  
+  if((*root)->balanceFactor == 2){
+    Node* rightNode = (*root)->right;
+    Node* rightLeftNode = rightNode->left;
+    if(rightNode->balanceFactor == -1 && rightLeftNode->balanceFactor == -1){
+      rightLeftNode->balanceFactor = 0;
+      rightNode->balanceFactor = 1;
+      (*root)->balanceFactor = 0;
+      rightLeftRotation(&(*root));
+    }
+    else if (rightNode->balanceFactor == -1 && rightLeftNode->balanceFactor == 0){
+      rightLeftNode->balanceFactor = 0;
+      rightNode->balanceFactor = 0;
+      (*root)->balanceFactor = 0;
+      rightLeftRotation(&(*root));
+    }
+    else if (rightNode->balanceFactor == -1 && rightLeftNode->balanceFactor == 1){
+      rightLeftNode->balanceFactor = 0;
+      rightNode->balanceFactor = 0;
+      (*root)->balanceFactor = -1;
+      rightLeftRotation(&(*root));
+    }
+    else if (rightNode->balanceFactor == 0){
+      rightNode->balanceFactor = -1;
+      (*root)->balanceFactor = 1;
+      leftRotation(&(*root));
+    }
+    else if (rightNode->balanceFactor == 1){
+      rightNode->balanceFactor = 0;
+      (*root)->balanceFactor = 0;
+      leftRotation(&(*root));
+    }
+  }
+  
   if(newNode != NULL){
     if((*root)->data > newNode->data){
       if((*root)->left == NULL){
@@ -42,36 +76,6 @@ int avlAdd(Node **root, Node *newNode){
     }
   }
   
-  
-  if((*root)->balanceFactor == 2){
-    Node* rightNode = (*root)->right;
-    Node* rightLeftNode = rightNode->left;
-    if(rightNode->balanceFactor == -1 && rightLeftNode->balanceFactor == -1){
-      rightLeftRotation(&(*root));
-      rightLeftNode->balanceFactor = 0;
-      rightNode->balanceFactor = 1;
-      (*root)->balanceFactor = 0;
-    }
-    else if (rightNode->balanceFactor == -1 && rightLeftNode->balanceFactor == 0){
-      rightLeftRotation(&(*root));
-      rightLeftNode->balanceFactor = 0;
-      rightNode->balanceFactor = 0;
-      (*root)->balanceFactor = 0;
-    }
-    else if (rightNode->balanceFactor == -1 && rightLeftNode->balanceFactor == 1){
-      rightLeftRotation(&(*root));
-      rightLeftNode->balanceFactor = 0;
-      rightNode->balanceFactor = 0;
-      (*root)->balanceFactor = -1;
-    }
-    else if (rightNode->balanceFactor == 0 && rightLeftNode->balanceFactor == 1){
-      rightLeftRotation(&(*root));
-      rightLeftNode->balanceFactor = 0;
-      rightNode->balanceFactor = 0;
-      (*root)->balanceFactor = -1;
-    }
-    
-  }
 }
 
 Node *avlRemove(Node **root, int data){
@@ -95,6 +99,13 @@ Node *avlRemove(Node **root, int data){
     }
     else
       removedNode = avlRemove(&((*root)->right), data);      
+  }
+  else{
+    if((*root)->left == NULL && (*root)->right == NULL){
+      removedNode = (*root);
+      (*root) = NULL;
+      return removedNode;
+    }
   }
 }
 

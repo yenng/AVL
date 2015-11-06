@@ -37,7 +37,7 @@ void test_right_rotate_node_tree_with_2_branches(void)
 
 
 
-  node1 = rightRotation(node1);
+  rightRotation(&node1);
 
 
 
@@ -67,7 +67,7 @@ void test_left_rotate_node_tree_with_2_branches(void)
 
 
 
-  node1 = leftRotation(node1);
+  leftRotation(&node1);
 
 
 

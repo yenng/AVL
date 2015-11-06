@@ -1,24 +1,24 @@
 #include "Rotation.h"
 #include "Node.h"
 
-Node *rightRotation(Node *centerNode){
-  Node *leftNode = centerNode->left;
+void *rightRotation(Node **centerNode){
+  Node *leftNode = (*centerNode)->left;
   Node *leftRightNode = leftNode->right;
   
-  leftNode->right = centerNode;
-  centerNode->left = leftRightNode;
+  leftNode->right = (*centerNode);
+  (*centerNode)->left = leftRightNode;
   
-  return (Node*)leftNode;
+  (*centerNode) = leftNode;
 }
 
-Node *leftRotation(Node *centerNode){
-  Node *rightNode = centerNode->right;
+void *leftRotation(Node **centerNode){
+  Node *rightNode = (*centerNode)->right;
   Node *rightLeftNode = rightNode->left;
   
-  rightNode->left = centerNode;
-  centerNode->right = rightLeftNode;
+  rightNode->left = (*centerNode);
+  (*centerNode)->right = rightLeftNode;
   
-  return (Node*)rightNode;
+  (*centerNode) = rightNode;
 }
 
 void *rightLeftRotation(Node **centerNode){

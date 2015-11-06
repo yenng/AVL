@@ -20,7 +20,7 @@ void test_right_rotate_node_tree_with_2_branches(void)
   node1->left = (Node*)createNode(1,50);
   node1->left->right = (Node*)createNode(1,60);
   //rotate the tree to right
-  node1 = rightRotation(node1);
+  rightRotation(&node1);
   //test start here
   TEST_ASSERT_EQUAL(50,node1->data);
   TEST_ASSERT_EQUAL(70,node1->right->data);
@@ -35,7 +35,7 @@ void test_left_rotate_node_tree_with_2_branches(void)
   node1->right = (Node*)createNode(1,70);
   node1->right->left = (Node*)createNode(1,60);
   //rotate the tree to left
-  node1 = leftRotation(node1);
+  leftRotation(&node1);
   //test start here
   TEST_ASSERT_EQUAL(70,node1->data);
   TEST_ASSERT_EQUAL(50,node1->left->data);
