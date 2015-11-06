@@ -1,0 +1,26 @@
+---
+:source:
+  :path: test
+  :file: test_AvlRemove.c
+:successes:
+- :test: test_avlRemove
+  :line: 48
+  :message: ''
+- :test: test_avlremove_left_node_from_tree
+  :line: 65
+  :message: ''
+- :test: test_avlremove_right_node_from_tree
+  :line: 94
+  :message: ''
+- :test: test_avlremove_with_single_rotation
+  :line: 113
+  :message: ''
+:failures: []
+:ignores: []
+:counts:
+  :total: 4
+  :passed: 4
+  :failed: 0
+  :ignored: 0
+:stdout:
+- ''

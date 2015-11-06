@@ -64,6 +64,35 @@ void test_avlAdd_twice(void){
   TEST_ASSERT_EQUAL(0,x->right->balanceFactor);
 }
 
+void test_create_a_large_tree_by_using_avlAdd(void){
+  Node* tree = &node30;
+  int i = avlAdd(&tree,&node20);
+  i = avlAdd(&tree,&node50);
+  i = avlAdd(&tree,&node10);
+  i = avlAdd(&tree,&node40);
+  i = avlAdd(&tree,&node80);
+  i = avlAdd(&tree,&node60);
+  i = avlAdd(&tree,&node100);
+  
+  TEST_ASSERT_EQUAL(30,tree->data);
+  TEST_ASSERT_EQUAL(0,tree->balanceFactor);
+  TEST_ASSERT_EQUAL(20,tree->left->data);
+  TEST_ASSERT_EQUAL(-1,tree->left->balanceFactor);
+  TEST_ASSERT_EQUAL(10,tree->left->left->data);
+  TEST_ASSERT_EQUAL(0,tree->left->left->balanceFactor);
+  TEST_ASSERT_EQUAL(50,tree->right->data);
+  TEST_ASSERT_EQUAL(1,tree->right->balanceFactor);
+  TEST_ASSERT_EQUAL(80,tree->right->right->data);
+  TEST_ASSERT_EQUAL(0,tree->right->right->balanceFactor);
+  TEST_ASSERT_EQUAL(40,tree->right->left->data);
+  TEST_ASSERT_EQUAL(0,tree->right->left->balanceFactor);
+  TEST_ASSERT_EQUAL(100,tree->right->right->right->data);
+  TEST_ASSERT_EQUAL(0,tree->right->right->right->balanceFactor);
+  TEST_ASSERT_EQUAL(60,tree->right->right->left->data);
+  TEST_ASSERT_EQUAL(0,tree->right->right->left->balanceFactor);
+  
+  
+}
 void test_avlAdd_node_to_tree_with_1_branch(void){
   //declare variable.
   Node* node = malloc(sizeof(Node));
@@ -218,48 +247,4 @@ void test_double_rotation_the_tree_by_using_avlAdd_function(void){
   TEST_ASSERT_EQUAL(0,nodeBranch2->left->balanceFactor);
   TEST_ASSERT_EQUAL(10,nodeBranch3->left->data);
   TEST_ASSERT_EQUAL(0,nodeBranch3->left->balanceFactor);
-}
-
-void test_avlRemove(void){
-  Node* x = &node10;
-  Node* removedNode = avlRemove(&x, 10);
-  
-  TEST_ASSERT_NULL(x); 
-  TEST_ASSERT_EQUAL(10,removedNode->data);
-}
-
-void test_avlremove_smaller_node_from_tree(void){
-  //declare variable.
-  Node* node = malloc(sizeof(Node));
-  //create a complicated tree.
-	node = (Node*)createNode(0, 30);
-  node->left = (Node*)createNode(0,20);
-  node->right = (Node*)createNode(0,40);
-  //create a tree with 3 nodes.
-	Node *removedNode = avlRemove(&node, 20);
-  
-  TEST_ASSERT_EQUAL(1,node->balanceFactor);
-  TEST_ASSERT_EQUAL(30,node->data);
-  TEST_ASSERT_EQUAL(0,node->right->balanceFactor);
-  TEST_ASSERT_EQUAL(40,node->right->data); 
-  TEST_ASSERT_NULL(node->left); 
-  TEST_ASSERT_EQUAL(20,(int)(removedNode->data)); 
-}
-
-void test_avlremove_larger_node_from_tree(void){
-  //declare variable.
-  Node* node = malloc(sizeof(Node));
-  //create a complicated tree.
-	node = (Node*)createNode(0, 30);
-  node->left = (Node*)createNode(0,20);
-  node->right = (Node*)createNode(0,40);
-  //create a tree with 3 nodes.
-	Node *removedNode = avlRemove(&node, 40);
-  
-  TEST_ASSERT_EQUAL(-1,node->balanceFactor);
-  TEST_ASSERT_EQUAL(30,node->data);
-  TEST_ASSERT_EQUAL(0,node->left->balanceFactor);
-  TEST_ASSERT_EQUAL(20,node->left->data); 
-  TEST_ASSERT_NULL(node->right); 
-  TEST_ASSERT_EQUAL(40,(int)(removedNode->data)); 
 }

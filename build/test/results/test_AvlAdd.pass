@@ -1,7 +1,7 @@
 ---
 :source:
   :path: test
-  :file: test_Avl.c
+  :file: test_AvlAdd.c
 :successes:
 - :test: test_avlAdd
   :line: 43
@@ -9,35 +9,29 @@
 - :test: test_avlAdd_twice
   :line: 53
   :message: ''
-- :test: test_avlAdd_node_to_tree_with_1_branch
+- :test: test_create_a_large_tree_by_using_avlAdd
   :line: 67
   :message: ''
+- :test: test_avlAdd_node_to_tree_with_1_branch
+  :line: 96
+  :message: ''
 - :test: test_single_rotation_with_avlAdd
-  :line: 85
+  :line: 114
   :message: ''
 - :test: test_single_rotation_with_avlAdd_and_add_node
-  :line: 103
+  :line: 132
   :message: ''
 - :test: test_add_a_node_and_double_rotation_the_tree_by_using_avlAdd_function
-  :line: 123
+  :line: 152
   :message: ''
 - :test: test_double_rotation_the_tree_by_using_avlAdd_function
-  :line: 174
-  :message: ''
-- :test: test_avlRemove
-  :line: 223
-  :message: ''
-- :test: test_avlremove_smaller_node_from_tree
-  :line: 231
-  :message: ''
-- :test: test_avlremove_larger_node_from_tree
-  :line: 249
+  :line: 203
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 10
-  :passed: 10
+  :total: 8
+  :passed: 8
   :failed: 0
   :ignored: 0
 :stdout:
